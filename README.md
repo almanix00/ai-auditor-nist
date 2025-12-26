@@ -72,20 +72,25 @@
 ```
 
 ### Mock 데이터
-- **4개 샘플 AI 모델**: 
-  - GPT-4 Healthcare Chatbot
-  - **GPT-5.2 Advanced Assistant** (2025 최신 모델)
-  - Resume Screening AI
-  - Financial Fraud Detector
-- **5개 스캔 결과**: 보안/공정성/견고성 점수 포함
+- **11개 최신 AI 모델 (2025)**: 
+  - **GPT-4 Healthcare Chatbot** (OpenAI)
+  - **GPT-5.2 Advanced Assistant** (OpenAI) - 2025 최신
+  - **GPT 5.2 Thinking Mode** (OpenAI) - 사고 과정 시각화
+  - **o3 Advanced Reasoning** (OpenAI) - 추론 특화
+  - **Gemini 3 Pro** (Google) - 최첨단 추론 모델
+  - **Claude Opus 4.5** (Anthropic) - 하이브리드 추론
+  - **Grok 4.1 Fast** (xAI) - 실시간 분석
+  - **DeepSeek R1** (DeepSeek) - 연구 특화
+  - **Llama 4 Maverick** (Meta) - 오픈소스 최고급
+  - Resume Screening AI (Custom)
+  - Financial Fraud Detector (Custom)
+- **9개 스캔 결과**: 보안/공정성/견고성 점수 포함
 - **NIST 맵핑 데이터**: 21개 항목별 평가 결과
 
-### 📊 GPT-5.2 스캔 결과 하이라이트
-- **전체 점수**: 93/100 (최고 수준)
-- **보안성**: 94점 - 프롬프트 인젝션 저항률 94%
-- **공정성**: 89점 - 인구통계학적 균등성 0.95
-- **견고성**: 96점 - 의미론적 안정성 96%
-- **NIST AI RMF**: 21개 항목 **모두 PASS** ✅
+### 📊 최고 점수 모델 TOP 3
+1. **Claude Opus 4.5**: 96점 (보안 97, 공정성 95, 견고성 96)
+2. **Gemini 3 Pro**: 94점 (보안 96, 공정성 92, 견고성 95)
+3. **GPT-5.2**: 93점 (보안 94, 공정성 89, 견고성 96)
 
 ## 🚧 구현 예정 기능 (Phase 2)
 
@@ -201,6 +206,7 @@ const scanResult = await fetch(`${API_BASE_URL}/api/scans/${id}`).then(r => r.js
 - ✅ NIST AI RMF 맵핑 시각화
 - ✅ **GPT-5.2 모델 추가** - 2025년 최신 모델 포함
 - ✅ **다국어 지원 (한국어/English)** - 완벽한 i18n 시스템 구현
+- ✅ **7개 최신 AI 모델 추가** - Gemini 3 Pro, Claude Opus 4.5, Grok 4.1, DeepSeek R1, Llama 4, o3, GPT 5.2 Thinking
 
 ### 다음 단계
 - ⏳ GitHub 저장소 생성 및 코드 푸시
