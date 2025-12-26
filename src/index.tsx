@@ -4,6 +4,9 @@ import { cors } from 'hono/cors'
 import type { CloudflareBindings } from './types'
 import { mockAIModels, mockScanResults, getMockLatestScan, getMockScanResults } from './lib/mock-data'
 import { ScanDetailPage } from './routes/scan-detail'
+import { getLanguageFromCookie, setLanguageCookie } from './lib/i18n/utils'
+import { getTranslation, type Language } from './lib/i18n/translations'
+import { LanguageSwitcher } from './components/LanguageSwitcher'
 
 const app = new Hono<{ Bindings: CloudflareBindings }>()
 
@@ -11,8 +14,19 @@ const app = new Hono<{ Bindings: CloudflareBindings }>()
 app.use(renderer)
 app.use('/api/*', cors())
 
+// Language middleware
+app.use('*', async (c, next) => {
+  const queryLang = c.req.query('lang') as Language | undefined;
+  if (queryLang && (queryLang === 'ko' || queryLang === 'en')) {
+    setLanguageCookie(c, queryLang);
+  }
+  await next();
+})
+
 // Home - Dashboard
 app.get('/', (c) => {
+  const lang = getLanguageFromCookie(c);
+  const t = getTranslation(lang);
   const models = mockAIModels;
   const recentScans = mockScanResults.slice(0, 5);
   
@@ -592,6 +606,89 @@ app.get('/scan/:id', (c) => {
   }
   
   return c.render(<ScanDetailPage scan={scan} model={model} />)
+})
+
+// I18N Demo Page
+app.get('/i18n', (c) => {
+  const lang = getLanguageFromCookie(c);
+  const t = getTranslation(lang);
+  
+  return c.render(
+    <div class="min-h-screen bg-gray-50">
+      <NavHeader active="dashboard" lang={lang} />
+      
+      <main class="max-w-4xl mx-auto px-4 py-12">
+        <div class="bg-white rounded-lg shadow-lg p-8">
+          <h1 class="text-4xl font-bold text-gray-900 mb-6">
+            🌏 {lang === 'ko' ? '다국어 지원' : 'Multilingual Support'}
+          </h1>
+          
+          <div class="mb-8">
+            <p class="text-lg text-gray-700 mb-4">
+              {lang === 'ko' 
+                ? 'NIST AI Auditor는 한국어와 영어를 지원합니다.' 
+                : 'NIST AI Auditor supports Korean and English.'}
+            </p>
+            <p class="text-gray-600">
+              {lang === 'ko'
+                ? '우측 상단의 언어 버튼을 클릭하여 언어를 전환할 수 있습니다.'
+                : 'Click the language button in the top right to switch languages.'}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="border-l-4 border-blue-500 pl-4">
+              <h3 class="font-bold text-gray-900 mb-2">{t.dashboard.registeredModels}</h3>
+              <p class="text-3xl font-bold text-blue-600">4</p>
+            </div>
+            <div class="border-l-4 border-green-500 pl-4">
+              <h3 class="font-bold text-gray-900 mb-2">{t.dashboard.completedScans}</h3>
+              <p class="text-3xl font-bold text-green-600">5</p>
+            </div>
+            <div class="border-l-4 border-yellow-500 pl-4">
+              <h3 class="font-bold text-gray-900 mb-2">{t.scan.security}</h3>
+              <p class="text-3xl font-bold text-yellow-600">94{t.common.score}</p>
+            </div>
+            <div class="border-l-4 border-purple-500 pl-4">
+              <h3 class="font-bold text-gray-900 mb-2">{t.scan.fairness}</h3>
+              <p class="text-3xl font-bold text-purple-600">89{t.common.score}</p>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+            <h3 class="font-bold text-blue-900 mb-3">
+              {lang === 'ko' ? '지원되는 언어' : 'Supported Languages'}
+            </h3>
+            <ul class="space-y-2">
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                <span class="text-gray-700">한국어 (Korean)</span>
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                <span class="text-gray-700">English</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 flex space-x-4">
+            <a 
+              href="/" 
+              class="flex-1 bg-blue-600 text-white text-center px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold"
+            >
+              {t.dashboard.viewDetails}
+            </a>
+            <a 
+              href="/projects" 
+              class="flex-1 bg-gray-200 text-gray-700 text-center px-6 py-3 rounded-lg hover:bg-gray-300 transition-colors font-semibold"
+            >
+              {t.nav.projects}
+            </a>
+          </div>
+        </div>
+      </main>
+    </div>
+  )
 })
 
 export default app
