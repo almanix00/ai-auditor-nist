@@ -12,12 +12,15 @@
 
 ## 🌐 배포 URL
 
-### 프로토타입 (Mock 데이터)
+### 프로덕션 (Cloudflare Pages)
+- **공식 URL**: https://nist-ai-auditor.pages.dev
+- **최신 배포**: https://b12e8fe9.nist-ai-auditor.pages.dev
+
+### 개발/샌드박스
 - **샌드박스**: https://3000-i9slplb5qmtvp9afvzbr5-dfc00ec5.sandbox.novita.ai
-- **Cloudflare Pages**: (배포 예정)
 
 ### GitHub 저장소
-- (생성 예정)
+- **GitHub**: https://github.com/almanix00/ai-auditor-nist
 
 ## 🎯 완료된 기능 (Phase 1 - 프로토타입)
 
@@ -209,10 +212,11 @@ const scanResult = await fetch(`${API_BASE_URL}/api/scans/${id}`).then(r => r.js
 - ✅ **7개 최신 AI 모델 추가** - Gemini 3 Pro, Claude Opus 4.5, Grok 4.1, DeepSeek R1, Llama 4, o3, GPT 5.2 Thinking
 
 ### 다음 단계
-- ⏳ GitHub 저장소 생성 및 코드 푸시
-- ⏳ Cloudflare Pages 배포
-- ⏳ 백엔드 스캔 엔진 개발 (별도)
-- ⏳ Railway 배포 및 프론트엔드 연동
+- ✅ **Cloudflare Pages 프로덕션 배포 완료** (2025-12-26)
+- ✅ **GitHub 저장소 생성 및 코드 푸시 완료**
+- ⏳ 백엔드 스캔 엔진 개발 (FastAPI + Giskard + ART)
+- ⏳ Railway 백엔드 배포
+- ⏳ 프론트엔드-백엔드 API 연동
 
 ## 📄 라이선스
 

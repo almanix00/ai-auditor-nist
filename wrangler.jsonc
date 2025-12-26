@@ -5,14 +5,15 @@
   "pages_build_output_dir": "./dist",
   "compatibility_flags": [
     "nodejs_compat"
-  ],
-  "d1_databases": [
-    {
-      "binding": "DB",
-      "database_name": "nist-auditor-db",
-      "database_id": "placeholder-will-be-created-on-first-deploy"
-    }
   ]
+  // D1 Database - will be added in Phase 2 (Backend Integration)
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "nist-auditor-db",
+  //     "database_id": "placeholder-will-be-created-on-first-deploy"
+  //   }
+  // ]
   // "vars": {
   //   "MY_VAR": "my-variable"
   // },
