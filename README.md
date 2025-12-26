@@ -65,9 +65,20 @@
 ```
 
 ### Mock 데이터
-- **3개 샘플 AI 모델**: GPT-4 Healthcare Chatbot, Resume Screening AI, Financial Fraud Detector
-- **4개 스캔 결과**: 보안/공정성/견고성 점수 포함
+- **4개 샘플 AI 모델**: 
+  - GPT-4 Healthcare Chatbot
+  - **GPT-5.2 Advanced Assistant** (2025 최신 모델)
+  - Resume Screening AI
+  - Financial Fraud Detector
+- **5개 스캔 결과**: 보안/공정성/견고성 점수 포함
 - **NIST 맵핑 데이터**: 21개 항목별 평가 결과
+
+### 📊 GPT-5.2 스캔 결과 하이라이트
+- **전체 점수**: 93/100 (최고 수준)
+- **보안성**: 94점 - 프롬프트 인젝션 저항률 94%
+- **공정성**: 89점 - 인구통계학적 균등성 0.95
+- **견고성**: 96점 - 의미론적 안정성 96%
+- **NIST AI RMF**: 21개 항목 **모두 PASS** ✅
 
 ## 🚧 구현 예정 기능 (Phase 2)
 
@@ -177,6 +188,7 @@ const scanResult = await fetch(`${API_BASE_URL}/api/scans/${id}`).then(r => r.js
 - ✅ 프로젝트 관리 페이지 구현
 - ✅ 스캔 결과 상세 페이지 구현
 - ✅ NIST AI RMF 맵핑 시각화
+- ✅ **GPT-5.2 모델 추가** - 2025년 최신 모델 포함
 
 ### 다음 단계
 - ⏳ GitHub 저장소 생성 및 코드 푸시
