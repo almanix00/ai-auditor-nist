@@ -3,6 +3,7 @@ import { renderer } from './renderer'
 import { cors } from 'hono/cors'
 import type { CloudflareBindings } from './types'
 import { mockAIModels, mockScanResults, getMockLatestScan, getMockScanResults } from './lib/mock-data'
+import { ScanDetailPage } from './routes/scan-detail'
 
 const app = new Hono<{ Bindings: CloudflareBindings }>()
 
@@ -573,6 +574,24 @@ app.get('/projects/:id', (c) => {
       </main>
     </div>
   )
+})
+
+// Scan Detail
+app.get('/scan/:id', (c) => {
+  const id = parseInt(c.req.param('id'));
+  const scan = mockScanResults.find(s => s.id === id);
+  
+  if (!scan) {
+    return c.text('Scan not found', 404);
+  }
+  
+  const model = mockAIModels.find(m => m.id === scan.model_id);
+  
+  if (!model) {
+    return c.text('Model not found', 404);
+  }
+  
+  return c.render(<ScanDetailPage scan={scan} model={model} />)
 })
 
 export default app
