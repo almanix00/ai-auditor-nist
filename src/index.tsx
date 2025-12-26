@@ -33,28 +33,7 @@ app.get('/', (c) => {
   
   return c.render(
     <div class="min-h-screen">
-      {/* Header */}
-      <header class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
-              <h1 class="text-2xl font-bold text-gray-900">NIST AI Auditor</h1>
-            </div>
-            <nav class="flex space-x-6">
-              <a href="/" class="text-blue-600 font-semibold">
-                <i class="fas fa-home mr-2"></i>대시보드
-              </a>
-              <a href="/projects" class="text-gray-600 hover:text-blue-600">
-                <i class="fas fa-project-diagram mr-2"></i>프로젝트
-              </a>
-              <a href="/reports" class="text-gray-600 hover:text-blue-600">
-                <i class="fas fa-file-pdf mr-2"></i>리포트
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <NavHeader active="dashboard" lang={lang} />
 
       {/* Main Content */}
       <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -202,32 +181,13 @@ app.get('/', (c) => {
 
 // Projects List
 app.get('/projects', (c) => {
+  const lang = getLanguageFromCookie(c);
+  const t = getTranslation(lang);
   const models = mockAIModels;
   
   return c.render(
     <div class="min-h-screen">
-      {/* Header */}
-      <header class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
-              <h1 class="text-2xl font-bold text-gray-900">NIST AI Auditor</h1>
-            </div>
-            <nav class="flex space-x-6">
-              <a href="/" class="text-gray-600 hover:text-blue-600">
-                <i class="fas fa-home mr-2"></i>대시보드
-              </a>
-              <a href="/projects" class="text-blue-600 font-semibold">
-                <i class="fas fa-project-diagram mr-2"></i>프로젝트
-              </a>
-              <a href="/reports" class="text-gray-600 hover:text-blue-600">
-                <i class="fas fa-file-pdf mr-2"></i>리포트
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <NavHeader active="projects" lang={lang} />
 
       {/* Main Content */}
       <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -387,6 +347,8 @@ app.get('/projects', (c) => {
 
 // Project Detail
 app.get('/projects/:id', (c) => {
+  const lang = getLanguageFromCookie(c);
+  const t = getTranslation(lang);
   const id = parseInt(c.req.param('id'));
   const model = mockAIModels.find(m => m.id === id);
   
@@ -399,28 +361,7 @@ app.get('/projects/:id', (c) => {
   
   return c.render(
     <div class="min-h-screen">
-      {/* Header */}
-      <header class="bg-white border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div class="flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-              <i class="fas fa-shield-alt text-3xl text-blue-600"></i>
-              <h1 class="text-2xl font-bold text-gray-900">NIST AI Auditor</h1>
-            </div>
-            <nav class="flex space-x-6">
-              <a href="/" class="text-gray-600 hover:text-blue-600">
-                <i class="fas fa-home mr-2"></i>대시보드
-              </a>
-              <a href="/projects" class="text-blue-600 font-semibold">
-                <i class="fas fa-project-diagram mr-2"></i>프로젝트
-              </a>
-              <a href="/reports" class="text-gray-600 hover:text-blue-600">
-                <i class="fas fa-file-pdf mr-2"></i>리포트
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <NavHeader active="projects" lang={lang} />
 
       {/* Main Content */}
       <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -593,6 +534,7 @@ app.get('/projects/:id', (c) => {
 
 // Scan Detail
 app.get('/scan/:id', (c) => {
+  const lang = getLanguageFromCookie(c);
   const id = parseInt(c.req.param('id'));
   const scan = mockScanResults.find(s => s.id === id);
   
@@ -606,7 +548,7 @@ app.get('/scan/:id', (c) => {
     return c.text('Model not found', 404);
   }
   
-  return c.render(<ScanDetailPage scan={scan} model={model} />)
+  return c.render(<ScanDetailPage scan={scan} model={model} lang={lang} />)
 })
 
 // I18N Demo Page
