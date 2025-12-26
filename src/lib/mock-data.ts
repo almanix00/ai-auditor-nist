@@ -72,6 +72,111 @@ export const mockAIModels: AIModel[] = [
     status: 'active',
     created_at: '2025-12-26T04:00:00Z',
     updated_at: '2025-12-26T04:00:00Z'
+  },
+  {
+    id: 5,
+    user_id: 1,
+    name: 'Gemini 3 Pro Reasoning Engine',
+    description: 'Most advanced reasoning model from Google with multimodal capabilities',
+    model_type: 'text_generation',
+    api_provider: 'Google',
+    api_endpoint: 'https://generativelanguage.googleapis.com/v1/models/gemini-3-pro',
+    model_id: 'gemini-3-pro',
+    industry: 'Enterprise AI',
+    regulatory_scope: 'EU AI Act, NIST AI RMF 1.0',
+    status: 'active',
+    created_at: '2025-12-26T05:00:00Z',
+    updated_at: '2025-12-26T05:00:00Z'
+  },
+  {
+    id: 6,
+    user_id: 1,
+    name: 'Claude Opus 4.5 Strategic Advisor',
+    description: 'Anthropic\'s most advanced hybrid-reasoning model for complex decision-making',
+    model_type: 'text_generation',
+    api_provider: 'Anthropic',
+    api_endpoint: 'https://api.anthropic.com/v1/messages',
+    model_id: 'claude-opus-4.5',
+    industry: 'Strategic Consulting',
+    regulatory_scope: 'EU AI Act, NIST AI RMF 1.0, ISO 42001',
+    status: 'active',
+    created_at: '2025-12-26T05:30:00Z',
+    updated_at: '2025-12-26T05:30:00Z'
+  },
+  {
+    id: 7,
+    user_id: 1,
+    name: 'Grok 4.1 Fast Analysis',
+    description: 'xAI\'s flagship reasoning model with real-time data integration',
+    model_type: 'text_generation',
+    api_provider: 'xAI',
+    api_endpoint: 'https://api.x.ai/v1/chat/completions',
+    model_id: 'grok-4.1-fast',
+    industry: 'Real-time Analytics',
+    regulatory_scope: 'NIST AI RMF 1.0',
+    status: 'active',
+    created_at: '2025-12-26T06:00:00Z',
+    updated_at: '2025-12-26T06:00:00Z'
+  },
+  {
+    id: 8,
+    user_id: 1,
+    name: 'DeepSeek R1 Research Assistant',
+    description: 'Advanced reasoning model specialized in scientific research and analysis',
+    model_type: 'text_generation',
+    api_provider: 'DeepSeek',
+    api_endpoint: 'https://api.deepseek.com/v1/chat/completions',
+    model_id: 'deepseek-r1',
+    industry: 'Research & Development',
+    regulatory_scope: 'NIST AI RMF 1.0',
+    status: 'active',
+    created_at: '2025-12-26T06:30:00Z',
+    updated_at: '2025-12-26T06:30:00Z'
+  },
+  {
+    id: 9,
+    user_id: 1,
+    name: 'Llama 4 Maverick Open Platform',
+    description: 'Meta\'s advanced open-source model with exceptional performance',
+    model_type: 'text_generation',
+    api_provider: 'Meta',
+    api_endpoint: 'https://api.meta.ai/llama/v4/completions',
+    model_id: 'llama-4-maverick',
+    industry: 'Open Source AI',
+    regulatory_scope: 'EU AI Act, NIST AI RMF 1.0',
+    status: 'active',
+    created_at: '2025-12-26T07:00:00Z',
+    updated_at: '2025-12-26T07:00:00Z'
+  },
+  {
+    id: 10,
+    user_id: 1,
+    name: 'o3 Advanced Reasoning',
+    description: 'OpenAI\'s specialized reasoning model for complex problem-solving',
+    model_type: 'text_generation',
+    api_provider: 'OpenAI',
+    api_endpoint: 'https://api.openai.com/v1/chat/completions',
+    model_id: 'o3',
+    industry: 'Scientific Computing',
+    regulatory_scope: 'NIST AI RMF 1.0, ISO 42001',
+    status: 'active',
+    created_at: '2025-12-26T07:30:00Z',
+    updated_at: '2025-12-26T07:30:00Z'
+  },
+  {
+    id: 11,
+    user_id: 1,
+    name: 'GPT 5.2 Thinking Mode',
+    description: 'Advanced thinking model with visible reasoning process and chain-of-thought',
+    model_type: 'text_generation',
+    api_provider: 'OpenAI',
+    api_endpoint: 'https://api.openai.com/v1/chat/completions',
+    model_id: 'gpt-5.2-thinking',
+    industry: 'Education & Training',
+    regulatory_scope: 'EU AI Act, NIST AI RMF 1.0',
+    status: 'active',
+    created_at: '2025-12-26T08:00:00Z',
+    updated_at: '2025-12-26T08:00:00Z'
   }
 ];
 
@@ -341,6 +446,236 @@ export const mockScanResults: ScanResult[] = [
     test_dataset_size: 2000,
     execution_time_seconds: 310,
     created_at: '2025-12-26T04:30:00Z'
+  },
+  // Gemini 3 Pro Scan
+  {
+    id: 6,
+    model_id: 5,
+    scan_date: '2025-12-26T05:15:00Z',
+    scan_type: 'full',
+    status: 'completed',
+    security_score: 96,
+    fairness_score: 92,
+    robustness_score: 95,
+    overall_score: 94,
+    security_details: {
+      promptInjectionRate: 4,
+      jailbreakAttempts: 200,
+      blockedCount: 192,
+      vulnerabilities: [
+        {
+          type: 'Edge Case Vulnerability',
+          severity: 'low',
+          description: 'Minimal edge cases in adversarial prompt handling'
+        }
+      ]
+    },
+    fairness_details: {
+      demographicParity: 0.04,
+      genderBias: 0.02,
+      raceBias: 0.04,
+      ageGroupBias: 0.03,
+      biasBreakdown: [
+        { group: 'Gender: Male', metric: 0.50, status: 'pass' },
+        { group: 'Gender: Female', metric: 0.50, status: 'pass' },
+        { group: 'Race: All Groups', metric: 0.49, status: 'pass' }
+      ]
+    },
+    robustness_details: {
+      semanticStability: 0.95,
+      typoResistance: 0.96,
+      adversarialResistance: 0.94,
+      testCases: [
+        {
+          original: 'Analyze quantum entanglement principles',
+          perturbed: 'Analyz quantm entnglment princples',
+          similarity: 0.96
+        }
+      ]
+    },
+    nist_mapping: {
+      'GOVERN-1.1': 'PASS', 'GOVERN-1.2': 'PASS', 'GOVERN-1.3': 'PASS',
+      'MAP-1.1': 'PASS', 'MAP-1.2': 'PASS', 'MAP-2.3': 'PASS', 'MAP-3.4': 'PASS',
+      'MEASURE-1.1': 'PASS', 'MEASURE-1.2': 'PASS', 'MEASURE-2.1': 'PASS',
+      'MEASURE-2.2': 'PASS', 'MEASURE-2.3': 'PASS', 'MEASURE-3.1': 'PASS',
+      'MEASURE-3.2': 'PASS', 'MEASURE-4.1': 'PASS', 'MANAGE-1.1': 'PASS',
+      'MANAGE-1.2': 'PASS', 'MANAGE-2.1': 'PASS', 'MANAGE-2.2': 'PASS',
+      'MANAGE-3.1': 'PASS', 'MANAGE-4.1': 'PASS'
+    },
+    test_dataset_size: 2500,
+    execution_time_seconds: 340,
+    created_at: '2025-12-26T05:15:00Z'
+  },
+  // Claude Opus 4.5 Scan
+  {
+    id: 7,
+    model_id: 6,
+    scan_date: '2025-12-26T05:45:00Z',
+    scan_type: 'full',
+    status: 'completed',
+    security_score: 97,
+    fairness_score: 95,
+    robustness_score: 96,
+    overall_score: 96,
+    security_details: {
+      promptInjectionRate: 3,
+      jailbreakAttempts: 250,
+      blockedCount: 243,
+      vulnerabilities: []
+    },
+    fairness_details: {
+      demographicParity: 0.02,
+      genderBias: 0.01,
+      raceBias: 0.02,
+      ageGroupBias: 0.02,
+      biasBreakdown: [
+        { group: 'Gender: Male', metric: 0.50, status: 'pass' },
+        { group: 'Gender: Female', metric: 0.50, status: 'pass' },
+        { group: 'All Demographics', metric: 0.50, status: 'pass' }
+      ]
+    },
+    robustness_details: {
+      semanticStability: 0.97,
+      typoResistance: 0.96,
+      adversarialResistance: 0.95,
+      testCases: [
+        {
+          original: 'Develop strategic business framework',
+          perturbed: 'Devlop stratgic busness framwork',
+          similarity: 0.97
+        }
+      ]
+    },
+    nist_mapping: {
+      'GOVERN-1.1': 'PASS', 'GOVERN-1.2': 'PASS', 'GOVERN-1.3': 'PASS',
+      'MAP-1.1': 'PASS', 'MAP-1.2': 'PASS', 'MAP-2.3': 'PASS', 'MAP-3.4': 'PASS',
+      'MEASURE-1.1': 'PASS', 'MEASURE-1.2': 'PASS', 'MEASURE-2.1': 'PASS',
+      'MEASURE-2.2': 'PASS', 'MEASURE-2.3': 'PASS', 'MEASURE-3.1': 'PASS',
+      'MEASURE-3.2': 'PASS', 'MEASURE-4.1': 'PASS', 'MANAGE-1.1': 'PASS',
+      'MANAGE-1.2': 'PASS', 'MANAGE-2.1': 'PASS', 'MANAGE-2.2': 'PASS',
+      'MANAGE-3.1': 'PASS', 'MANAGE-4.1': 'PASS'
+    },
+    test_dataset_size: 3000,
+    execution_time_seconds: 380,
+    created_at: '2025-12-26T05:45:00Z'
+  },
+  // Grok 4.1 Fast Scan
+  {
+    id: 8,
+    model_id: 7,
+    scan_date: '2025-12-26T06:15:00Z',
+    scan_type: 'full',
+    status: 'completed',
+    security_score: 91,
+    fairness_score: 88,
+    robustness_score: 93,
+    overall_score: 91,
+    security_details: {
+      promptInjectionRate: 9,
+      jailbreakAttempts: 180,
+      blockedCount: 164,
+      vulnerabilities: [
+        {
+          type: 'Real-time Data Injection',
+          severity: 'medium',
+          description: 'Potential risks with real-time external data integration'
+        }
+      ]
+    },
+    fairness_details: {
+      demographicParity: 0.07,
+      genderBias: 0.05,
+      raceBias: 0.08,
+      ageGroupBias: 0.06,
+      biasBreakdown: [
+        { group: 'Gender: Male', metric: 0.53, status: 'pass' },
+        { group: 'Gender: Female', metric: 0.47, status: 'pass' },
+        { group: 'Race: Diverse', metric: 0.49, status: 'pass' }
+      ]
+    },
+    robustness_details: {
+      semanticStability: 0.93,
+      typoResistance: 0.92,
+      adversarialResistance: 0.91,
+      testCases: [
+        {
+          original: 'Real-time market analysis',
+          perturbed: 'Realtime marktet analisys',
+          similarity: 0.93
+        }
+      ]
+    },
+    nist_mapping: {
+      'GOVERN-1.1': 'PASS', 'GOVERN-1.2': 'PASS', 'GOVERN-1.3': 'PASS',
+      'MAP-1.1': 'PASS', 'MAP-1.2': 'PASS', 'MAP-2.3': 'PASS', 'MAP-3.4': 'PASS',
+      'MEASURE-1.1': 'PASS', 'MEASURE-1.2': 'WARNING', 'MEASURE-2.1': 'PASS',
+      'MEASURE-2.2': 'PASS', 'MEASURE-2.3': 'PASS', 'MEASURE-3.1': 'PASS',
+      'MEASURE-3.2': 'PASS', 'MEASURE-4.1': 'PASS', 'MANAGE-1.1': 'PASS',
+      'MANAGE-1.2': 'PASS', 'MANAGE-2.1': 'WARNING', 'MANAGE-2.2': 'PASS',
+      'MANAGE-3.1': 'PASS', 'MANAGE-4.1': 'PASS'
+    },
+    test_dataset_size: 1800,
+    execution_time_seconds: 195,
+    created_at: '2025-12-26T06:15:00Z'
+  },
+  // DeepSeek R1 Scan
+  {
+    id: 9,
+    model_id: 8,
+    scan_date: '2025-12-26T06:45:00Z',
+    scan_type: 'full',
+    status: 'completed',
+    security_score: 89,
+    fairness_score: 91,
+    robustness_score: 94,
+    overall_score: 91,
+    security_details: {
+      promptInjectionRate: 11,
+      jailbreakAttempts: 160,
+      blockedCount: 142,
+      vulnerabilities: [
+        {
+          type: 'Research Data Exposure',
+          severity: 'low',
+          description: 'Minor risk of exposing research methodologies'
+        }
+      ]
+    },
+    fairness_details: {
+      demographicParity: 0.06,
+      genderBias: 0.04,
+      raceBias: 0.07,
+      ageGroupBias: 0.05,
+      biasBreakdown: [
+        { group: 'Gender: Male', metric: 0.52, status: 'pass' },
+        { group: 'Gender: Female', metric: 0.48, status: 'pass' },
+        { group: 'Academic Background', metric: 0.50, status: 'pass' }
+      ]
+    },
+    robustness_details: {
+      semanticStability: 0.94,
+      typoResistance: 0.93,
+      adversarialResistance: 0.92,
+      testCases: [
+        {
+          original: 'Conduct scientific literature review',
+          perturbed: 'Condct scintific litarature revew',
+          similarity: 0.94
+        }
+      ]
+    },
+    nist_mapping: {
+      'GOVERN-1.1': 'PASS', 'GOVERN-1.2': 'PASS', 'GOVERN-1.3': 'PASS',
+      'MAP-1.1': 'PASS', 'MAP-1.2': 'PASS', 'MAP-2.3': 'PASS', 'MAP-3.4': 'PASS',
+      'MEASURE-1.1': 'PASS', 'MEASURE-1.2': 'PASS', 'MEASURE-2.1': 'PASS',
+      'MEASURE-2.2': 'PASS', 'MEASURE-2.3': 'PASS', 'MEASURE-3.1': 'PASS',
+      'MEASURE-3.2': 'PASS', 'MEASURE-4.1': 'PASS', 'MANAGE-1.1': 'PASS',
+      'MANAGE-1.2': 'PASS', 'MANAGE-2.1': 'PASS', 'MANAGE-2.2': 'PASS',
+      'MANAGE-3.1': 'PASS', 'MANAGE-4.1': 'PASS'
+    },
+    test_dataset_size: 2200,
+    execution_time_seconds: 290,
+    created_at: '2025-12-26T06:45:00Z'
   }
 ];
 
