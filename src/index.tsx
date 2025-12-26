@@ -7,6 +7,7 @@ import { ScanDetailPage } from './routes/scan-detail'
 import { getLanguageFromCookie, setLanguageCookie } from './lib/i18n/utils'
 import { getTranslation, type Language } from './lib/i18n/translations'
 import { LanguageSwitcher } from './components/LanguageSwitcher'
+import { NavHeader } from './components/NavHeader'
 
 const app = new Hono<{ Bindings: CloudflareBindings }>()
 
@@ -610,6 +611,13 @@ app.get('/scan/:id', (c) => {
 
 // I18N Demo Page
 app.get('/i18n', (c) => {
+  // Handle language query parameter with redirect
+  const queryLang = c.req.query('lang') as Language | undefined;
+  if (queryLang && (queryLang === 'ko' || queryLang === 'en')) {
+    setLanguageCookie(c, queryLang);
+    return c.redirect('/i18n'); // Redirect to apply cookie
+  }
+  
   const lang = getLanguageFromCookie(c);
   const t = getTranslation(lang);
   
