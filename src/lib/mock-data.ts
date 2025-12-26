@@ -57,6 +57,21 @@ export const mockAIModels: AIModel[] = [
     status: 'active',
     created_at: '2025-11-10T09:15:00Z',
     updated_at: '2025-12-22T11:30:00Z'
+  },
+  {
+    id: 4,
+    user_id: 1,
+    name: 'GPT-5.2 Advanced Assistant',
+    description: 'Next-generation AI assistant with enhanced reasoning and multimodal capabilities',
+    model_type: 'text_generation',
+    api_provider: 'OpenAI',
+    api_endpoint: 'https://api.openai.com/v1/chat/completions',
+    model_id: 'gpt-5.2',
+    industry: 'General AI',
+    regulatory_scope: 'EU AI Act, NIST AI RMF 1.0, ISO 42001',
+    status: 'active',
+    created_at: '2025-12-26T04:00:00Z',
+    updated_at: '2025-12-26T04:00:00Z'
   }
 ];
 
@@ -233,6 +248,99 @@ export const mockScanResults: ScanResult[] = [
     test_dataset_size: 500,
     execution_time_seconds: 120,
     created_at: '2025-12-22T11:30:00Z'
+  },
+  {
+    id: 5,
+    model_id: 4,
+    scan_date: '2025-12-26T04:30:00Z',
+    scan_type: 'full',
+    status: 'completed',
+    security_score: 94,
+    fairness_score: 89,
+    robustness_score: 96,
+    overall_score: 93,
+    security_details: {
+      promptInjectionRate: 6,
+      jailbreakAttempts: 150,
+      blockedCount: 141,
+      vulnerabilities: [
+        {
+          type: 'Prompt Injection',
+          severity: 'low',
+          description: 'Minimal susceptibility to advanced prompt injection techniques'
+        },
+        {
+          type: 'Data Leakage',
+          severity: 'low',
+          description: 'Robust privacy controls prevent training data exposure'
+        }
+      ]
+    },
+    fairness_details: {
+      demographicParity: 0.05,
+      genderBias: 0.03,
+      raceBias: 0.06,
+      ageGroupBias: 0.04,
+      biasBreakdown: [
+        { group: 'Gender: Male', metric: 0.51, status: 'pass' },
+        { group: 'Gender: Female', metric: 0.49, status: 'pass' },
+        { group: 'Race: Caucasian', metric: 0.51, status: 'pass' },
+        { group: 'Race: African American', metric: 0.48, status: 'pass' },
+        { group: 'Race: Asian', metric: 0.50, status: 'pass' },
+        { group: 'Race: Hispanic', metric: 0.49, status: 'pass' },
+        { group: 'Age: 18-35', metric: 0.52, status: 'pass' },
+        { group: 'Age: 36-50', metric: 0.51, status: 'pass' },
+        { group: 'Age: 51+', metric: 0.49, status: 'pass' }
+      ]
+    },
+    robustness_details: {
+      semanticStability: 0.96,
+      typoResistance: 0.95,
+      adversarialResistance: 0.94,
+      testCases: [
+        {
+          original: 'Explain quantum computing in simple terms',
+          perturbed: 'Explan quantom computng in simpl term',
+          similarity: 0.97
+        },
+        {
+          original: 'What are the benefits of renewable energy?',
+          perturbed: 'Wat r the benifits ov reneuable enrgy?',
+          similarity: 0.96
+        },
+        {
+          original: 'How does blockchain technology work?',
+          perturbed: 'How dose blockchane tecnology werk?',
+          similarity: 0.95
+        }
+      ]
+    },
+    nist_mapping: {
+      'GOVERN-1.1': 'PASS',
+      'GOVERN-1.2': 'PASS',
+      'GOVERN-1.3': 'PASS',
+      'MAP-1.1': 'PASS',
+      'MAP-1.2': 'PASS',
+      'MAP-2.3': 'PASS',
+      'MAP-3.4': 'PASS',
+      'MEASURE-1.1': 'PASS',
+      'MEASURE-1.2': 'PASS',
+      'MEASURE-2.1': 'PASS',
+      'MEASURE-2.2': 'PASS',
+      'MEASURE-2.3': 'PASS',
+      'MEASURE-3.1': 'PASS',
+      'MEASURE-3.2': 'PASS',
+      'MEASURE-4.1': 'PASS',
+      'MANAGE-1.1': 'PASS',
+      'MANAGE-1.2': 'PASS',
+      'MANAGE-2.1': 'PASS',
+      'MANAGE-2.2': 'PASS',
+      'MANAGE-3.1': 'PASS',
+      'MANAGE-4.1': 'PASS'
+    },
+    test_dataset_size: 2000,
+    execution_time_seconds: 310,
+    created_at: '2025-12-26T04:30:00Z'
   }
 ];
 
